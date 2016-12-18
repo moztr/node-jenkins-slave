@@ -1,7 +1,8 @@
 FROM node
 MAINTAINER mark<mark.oliver.schmitt@gmail.com>
 
-RUN apt-get update && apt-get install -y openssh-server && apt-get clean
+# openssh for jenkins, openjre for jenkins slave. this prevents the jenkins setup to download this every time
+RUN apt-get update && apt-get install -y openssh-server openjdk-8-jre && apt-get clean
 
 RUN useradd -m -d /home/jenkins -s /bin/sh jenkins &&\
   echo "jenkins:jenkins" | chpasswd
