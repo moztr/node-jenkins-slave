@@ -7,5 +7,7 @@ RUN useradd -m -d /home/jenkins -s /bin/sh jenkins &&\
   echo "jenkins:jenkins" | chpasswd
 
 EXPOSE 22
-CMD ["/usr/sbin/sshd", "-D"
 
+RUN mkdir /var/run/sshd
+
+CMD ["/usr/sbin/sshd", "-D"]
